@@ -1,0 +1,31 @@
+<script>
+    let idade = Number(prompt("Digite a sua idade: "));
+
+    if (idade <= 12) {
+        console.log("Voce é criança bro");
+    }
+    else if (idade <= 18) {
+        console.log("Voce é adolescente bro")
+    }
+    else if (idade <= 60){
+        console.log("Adulto");
+    }
+    else {
+        console.log("Idoso")
+    }
+
+// Exemplo switch case
+
+let diaDaSemana = Number(prompt("Infomre o dia da semana de 1 a 7"));
+
+switch (diaDaSemana) {
+    case 1:
+        console.log("Domingo");
+        break;
+    case 2:
+        console.log("Segunda");
+        break;
+    default:
+        console.log("Número Inválido");
+}
+</script>
