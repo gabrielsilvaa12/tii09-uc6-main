@@ -1,0 +1,25 @@
+<script>
+    let carrinho = [];
+
+    function adicionarItemAoCarrinho(compras) {
+        carrinho.push(compras);
+        console.log(carrinho)
+    }
+
+    function removerItemDoCarrinho() {
+        carrinho.pop();
+        console.log(carrinho)
+    }
+
+    function limparCarrinho() {
+        carrinho = [];
+        console.log(carrinho)
+    }
+
+    adicionarItemAoCarrinho("Sabão");
+    adicionarItemAoCarrinho("Papel");
+    adicionarItemAoCarrinho("Toalha");
+    removerItemDoCarrinho();
+    limparCarrinho();
+
+</script>
