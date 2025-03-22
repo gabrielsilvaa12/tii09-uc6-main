@@ -23,6 +23,4 @@ function buscaBinaria(array, valor) {
     return - 1
 }
 
-console.log(buscaBinaria(numeros, 200));
-
-
+console.log(buscaBinaria(numeros, 10));
