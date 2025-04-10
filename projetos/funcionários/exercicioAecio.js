@@ -67,7 +67,7 @@ class Estagiario extends Funcionario {
     }
 
     registrarAtividade(descricao) {
-        return  `${this.getNome()} realizou a atividade: ${descricao}`;
+        return  `${this.getNome()} realizou a atividade: ${descricao}}`
     }
 }
 
@@ -87,5 +87,3 @@ const estagiario = new Estagiario("Junior", "E0558", 2024, "Avenida da Encosta")
 console.log(estagiario.baterPonto());
 console.log(estagiario.tempoDeEmpresa(2025));
 console.log(estagiario.receberSalario(2000));
-console.log(estagiario.registrarAtividade("Preparou o cafezinho. Delícia!"));
-console.log(estagiario.registrarAtividade("Limpou os tonners da impressora."));
