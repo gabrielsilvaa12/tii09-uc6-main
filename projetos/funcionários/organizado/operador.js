@@ -1,13 +1,11 @@
-import { Funcionario } from './funcionario';
+import { Funcionario } from './Funcionario.js';
 
-export class OperadorDeCaixa extends Funcionario {
+export class OperadorCaixa extends Funcionario {
+  constructor(nome, matricula, anoAdmissao, endereco) {
+    super(nome, matricula, anoAdmissao, endereco);
+  }
 
-    receberSalario(valor) {
-        // TODO: Modificação futura
-       return super.receberSalario(valor);
-    }
-
-    fechamentoCaixa(valorTotal) {
-        return `${this.getNome()} fechou o caixa com o valor de  R$${valorTotal}.`;
-    }
+  registrarVenda(valor) {
+    return `Venda de R$${valor.toFixed(2)} registrada por ${this.nome}`;
+  }
 }

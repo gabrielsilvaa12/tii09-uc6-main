@@ -1,11 +1,15 @@
-import { Funcionario } from './funcionario.js';
+import { Funcionario } from './Funcionario.js';
 
 export class Estagiario extends Funcionario {
-    receberSalario(valor) {
-        return `${this.getNome()} recebu bolsa estágio no valor de R$${valor}}`
-    }
+  constructor(nome, matricula, anoAdmissao, endereco) {
+    super(nome, matricula, anoAdmissao, endereco);
+  }
 
-    registrarAtividade(descricao) {
-        return  `${this.getNome()} realizou a atividade: ${descricao}`;
-    }
+  solicitarAjuda() {
+    return `Estagiário ${this.nome} solicitou ajuda ao supervisor.`;
+  }
+
+  baterPonto() {
+    return `Estagiário ${this.nome} marcou presença.`;
+  }
 }

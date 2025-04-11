@@ -1,22 +1,39 @@
-import { Estagiario } from './estagiario.js';
-import { OperadorDeCaixa } from './OperadorDeCaixa.js';
 import { Gerente } from './Gerente.js';
+import { OperadorCaixa } from './OperadorDeCaixa.js';
+import { Estagiario } from './Estagiario.js';
 
-const gerente = new Gerente("Ana", "G001", 2015, "Rua do Salto, nº 100");
-console.log(gerente.baterPonto());
-console.log(gerente.tempoDeEmpresa(2022));
-console.log(gerente.receberSalario(4000));
-console.log(gerente.autorizarDespesa(4000));
+// Implementar logica de integração com a página
 
-const caixa = new OperadorDeCaixa("Celso", "C005", 2023, "Rua Velha, nº 12");
-console.log(caixa.baterPonto());
-console.log(caixa.tempoDeEmpresa(2025));
-console.log(caixa.receberSalario(2000));
-console.log(caixa.fechamentoCaixa(20000));
+let bancoDeDados = [];
 
-const estagiario = new Estagiario("Junior", "E0558", 2024, "Avenida da Encosta");
-console.log(estagiario.baterPonto());
-console.log(estagiario.tempoDeEmpresa(2025));
-console.log(estagiario.receberSalario(2000));
-console.log(estagiario.registrarAtividade("Preparou o cafezinho. Delícia!"));
-console.log(estagiario.registrarAtividade("Limpou os tonners da impressora."));
+document.getElementById("btnCadastrar").addEventListener("click", function () {
+    const nome = document.getElementById("nome").value;
+    const matricula = document.getElementById("matricula").value;
+    const ano = document.getElementById("anoAdmissao").value;
+    const endereco = document.getElementById("endereco").value;
+    const tipo = document.getElementById("tipoFuncionario").value;
+
+    if (!nome || !matricula || !ano || !endereco || !tipo) {
+        alert("Dados inválidos, favor preencher corretamente!");
+        return;
+    }
+
+    let novoFunc;
+
+    if (tipo === "gerente") {
+        novoFunc = new Gerente(nome, matricula, ano, endereco);
+    } else if (tipo === "operador") {
+        novoFunc = new OperadorCaixa(nome, matricula, ano, endereco);
+    } else if (tipo === "estagiario") {
+        novoFunc = new Estagiario(nome, matricula, ano, endereco);
+    }
+
+    bancoDeDados.push(novoFunc);
+    console.log(bancoDeDados);
+    ExibirResultadoEmTela();
+});
+
+function ExibirResultadoEmTela() {
+    // Busca um elemento na tela
+    // Percorre o bancoDeDados, e lista esses elementos na tela
+}

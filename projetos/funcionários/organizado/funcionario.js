@@ -1,33 +1,54 @@
 export class Funcionario {
-    #nome;
-    #matricula;
-    #anoAdmissao;
-    #endereco;
+  #nome;
+  #matricula;
+  #anoAdmissao;
+  #endereco;
+  #salario = 0;
 
-    constructor(nome, matricula, anoAdimissao, endereco) {
-        this.#nome = nome;
-        this.#matricula = matricula;
-        this.#anoAdmissao = anoAdimissao;
-        this.#endereco = endereco;
-    }
+  constructor(nome, matricula, anoAdmissao, endereco) {
+    this.#nome = nome;
+    this.#matricula = matricula;
+    this.#anoAdmissao = anoAdmissao;
+    this.#endereco = endereco;
+  }
 
-    getNome() {
-        return this.#nome;
-    }
+  get nome() {
+    return this.#nome;
+  }
 
-    getMatricula() {
-        return this.#matricula;
-    }
+  get matricula() {
+    return this.#matricula;
+  }
 
-    receberSalario(valor) {
-        return `${this.#nome} recebeu R$ ${valor}.`;
-    }
+  get salario() {
+    return this.#salario;
+  }
 
-    tempoDeEmpresa(anoAtual) {
-        return anoAtual - this.#anoAdmissao;
+  receberSalario(valor) {
+    if (valor > 0) {
+      this.#salario += valor;
+      return `Salário de R$${valor.toFixed(2)} adicionado. Total: R$${this.#salario.toFixed(2)}`;
     }
+    return `Valor inválido para salário.`;
+  }
 
-    baterPonto() {
-        return `Ponto registrado para ${this.#nome}`;
-    }
+  verificarTempoEmpresa(anoAtual) {
+    const tempo = anoAtual - this.#anoAdmissao;
+    return `Tempo de empresa: ${tempo} anos.`;
+  }
+
+  baterPonto() {
+    const hora = new Date().toLocaleTimeString();
+    return `${this.#nome} bateu o ponto às ${hora}`;
+  }
+
+  getDados() {
+    return {
+      nome: this.#nome,
+      matricula: this.#matricula,
+      anoAdmissao: this.#anoAdmissao,
+      endereco: this.#endereco,
+      salario: this.#salario.toFixed(2)
+    };
+  }
 }
