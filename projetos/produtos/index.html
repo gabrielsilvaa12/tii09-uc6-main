@@ -83,6 +83,23 @@
     button:hover {
       background-color: #c13f3f;
     }
+
+    a {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: var(--preto-suave);
+  color: white;
+  font-weight: 400;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+a:hover {
+  background-color: #1a1a1a;
+}
   </style>
 </head>
 
@@ -103,7 +120,12 @@
     <input type="date" id="validade" />
 
     <button type="submit">Salvar</button>
+
+    <a href="produtos.html">Ver Produtos</a>
   </form>
+
+  <script type="module" src="script.js"></script>
+
 </body>
 
 </html>
