@@ -11,13 +11,8 @@ export class Pessoa {
         this.#documento = documento;
     }
 
-    get nome() {
-        return this.#nome;
-    }
-
-    get documento() {
-        return this.#documento;
-    }
+    get nome() { return this.#nome; }
+    get documento() { return this.#documento; }
 
     toString() {
         return `Nome: ${this.#nome}, Documento: ${this.#documento}`;
