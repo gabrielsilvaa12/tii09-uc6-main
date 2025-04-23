@@ -1,7 +1,10 @@
 import { Cliente } from "./Cliente.js";
 import { Conta } from "./Conta.js";
+import { Veiculo } from "./Veiculo.js";
+import { RegistroEstacionamento } from "./RegistroEstacionamento.js";
 
 export class BancoDeDados {
+
     // Clientes
     static salvarCliente(cliente) {
         localStorage.setItem(cliente.id, JSON.stringify({
@@ -19,11 +22,10 @@ export class BancoDeDados {
         const dados = JSON.parse(localStorage.getItem(id));
         return dados ? Cliente.fromJSONorObject(dados) : null;
     }
-    
+
     static buscarContaPorId(id) {
         const dados = JSON.parse(localStorage.getItem(id));
         if (!dados) return null;   
-        
         return Conta.fromJSONorObject(dados);
     }
 
@@ -42,6 +44,26 @@ export class BancoDeDados {
         return this.buscarTodosPorPrefixo('conta-', dados => {
             return Conta.fromJSONorObject(dados);
         });
+    }
+
+    // Registros de Estacionamento
+    static salvarRegistro(registro) {
+        localStorage.setItem(registro.id, JSON.stringify(registro.toJSON()));
+    }
+
+    static buscarTodosRegistros() {
+        return this.buscarTodosPorPrefixo('registro-', dados => {
+            return RegistroEstacionamento.fromJSONobject(dados);
+        });
+    }
+
+    static buscarRegistroPorId(id) {
+        const dados = JSON.parse(localStorage.getItem(id));
+        return dados ? RegistroEstacionamento.fromJSONobject(dados) : null;
+    }
+
+    static buscarRegistrosEmAberto() {
+        return this.buscarTodosRegistros().filter(r => r.horaSaida === null);
     }
 
     // Método genérico para busca por prefixo

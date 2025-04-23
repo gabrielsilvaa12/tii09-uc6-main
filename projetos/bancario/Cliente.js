@@ -5,12 +5,12 @@ export class Cliente {
     #nome;
     #ativo;
 
-    constructor(nome) {        
+    constructor(nome) {
         this.#id = Utils.getProximoId('cliente-');
         this.#nome = nome;
         this.#ativo = true;
     }
-    
+
     get id() { return this.#id; }
     get nome() { return this.#nome; }
     get ativo() { return this.#ativo; }
@@ -24,7 +24,7 @@ export class Cliente {
     }
 
     atualizarNome(novoNome) {
-        if(!novoNome || novoNome.length < 3) {
+        if (!novoNome || novoNome.length < 3) {
             throw new Error("Dados inválidos para atualização");
         }
 

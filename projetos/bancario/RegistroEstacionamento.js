@@ -13,6 +13,7 @@ export class RegistroEstacionamento {
         if (!(veiculo instanceof Veiculo) || !(cliente instanceof Cliente)) {
             throw new Error("Dados inválidos para registro.");
         }
+
         this.#id = Utils.getProximoId('registro-');
         this.#veiculo = veiculo;
         this.#cliente = cliente;
@@ -37,6 +38,11 @@ export class RegistroEstacionamento {
     static fromJSONobject(obj) {
         const veiculo = BancoDeDados.buscarVeiculoPorPlaca(obj.veiculo.placa);
         const cliente = BancoDeDados.buscarClientePorId(obj.cliente.id);
+    
+        if (!veiculo || !cliente) {
+            throw new Error("Registro inválido: cliente ou veículo não encontrados.");
+        }
+    
         const registro = new RegistroEstacionamento(veiculo, cliente);
         registro.#id = obj.id;
         registro.#horaEntrada = new Date(obj.horaEntrada);
@@ -44,6 +50,7 @@ export class RegistroEstacionamento {
         registro.#valorCobrado = obj.valorCobrado;
         return registro;
     }
+    
 
     toJSON() {
         return {

@@ -20,7 +20,7 @@ export class Veiculo {
     get modelo() {return this.#modelo; }
     get cor() {return this.#cor; }
     get tipo() {return this.#tipo; }
-    get clienteId() {return this. clienteId; }
+    get clienteId() { return this.#clienteId; }
 
     toString() {
         return `Placa: ${this.#placa}, Modelo: ${this.#modelo}, Cor: ${this.#cor}, Tipo: ${this.#tipo}`;
